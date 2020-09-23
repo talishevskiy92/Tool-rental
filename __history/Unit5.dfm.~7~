@@ -1,0 +1,95 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = #1054#1088#1077#1085#1076#1072#1090#1086#1088#1080
+  ClientHeight = 536
+  ClientWidth = 886
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 0
+    Width = 881
+    Height = 529
+    DataSource = DM.DataSource5
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'PIP'
+        Title.Caption = #1055#1088#1110#1079#1074#1080#1097#1077' '#1030#1084#39#1103' '#1055#1086' '#1073#1072#1090#1100#1082#1086#1074#1110
+        Width = 138
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Tovar'
+        Title.Caption = #1030#1085#1089#1090#1088#1091#1084#1077#1085#1090
+        Width = 79
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Ckilki_Dib'
+        Title.Caption = #1057#1082#1110#1083#1100#1082#1080' '#1076#1110#1073
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_pocat'
+        Title.Caption = #1044#1072#1090#1072' '#1074#1079#1103#1090#1090#1103
+        Width = 81
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_cin'
+        Title.Caption = #1044#1072#1090#1072' '#1087#1086#1074#1077#1088#1085#1077#1085#1085#1103
+        Width = 94
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Ckilki_God'
+        Title.Caption = #1057#1082#1110#1083#1100#1082#1080' '#1075#1086#1076#1080#1085
+        Width = 93
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'God_pochatok'
+        Title.Caption = #1043#1086#1076#1080#1085#1072' '#1074#1079#1103#1090#1090#1103
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'God_kinec'
+        Title.Caption = #1043#1086#1076#1080#1085#1085#1072' '#1082#1110#1085#1094#1103
+        Width = 88
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Poverneny'
+        Title.Caption = #1055#1086#1074#1077#1088#1085#1077#1085#1085#1103
+        Width = 67
+        Visible = True
+      end>
+  end
+end

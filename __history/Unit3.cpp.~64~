@@ -1,0 +1,358 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit3.h"
+
+#include "Unit1.h"
+#include "Unit2.h"
+#include "Unit4.h"
+#include "Unit5.h"
+#include "Unit6.h"
+#include "Unit7.h"
+#include "Unit8.h"
+#include "Unit9.h"
+#include "Unit10.h"
+#include "Unit11.h"
+#include "Unit12.h"
+#include "Unit13.h"
+#include "Unit14.h"
+#include "Unit15.h"
+#include <fstream.h>
+#include "Unit16.h"
+#include "Unit17.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm3 *Form3;
+//---------------------------------------------------------------------------
+__fastcall TForm3::TForm3(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+int TForm3::SUMM(int Doxid, int Zatrata, int PriceI){
+	return (Doxid - (Zatrata + PriceI));
+}
+
+void __fastcall TForm3::Edit1Change(TObject *Sender)
+{
+if(Edit1->Text==""){
+DM->Sklad_I->Filtered=0;
+}
+else{
+DM->Sklad_I->Filter="Marcerovka Like '%"+Edit1->Text+"%'";
+DM->Sklad_I->Filtered=1;}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::BitBtn8Click(TObject *Sender)
+{
+Form9->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::DBGrid1DblClick(TObject *Sender)
+{
+Form9->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::FormActivate(TObject *Sender)
+{
+		DM->Pocupec->First();
+						DM->ADOQ->Active=false;
+					for (int i = 0; i < DM->Pocupec->RecordCount; i++) {
+					DM->Kohuk->First();
+					for (int i = 0; i < DM->Kohuk->RecordCount; i++) {
+					if(DM->Kohuk->FieldByName("Poverneny")->AsString == "Ні"){
+					DM->ADOQ->Active=true;
+					DBGrid2->Update();
+					}
+					 DM->Kohuk->Next();
+
+			 }
+			 DM->Pocupec->Next();
+		 }
+				/*
+
+int GetHHD();
+  unsigned int drive_type = GetDriveType(NULL);
+
+    char VolumeNameBuffer[100];
+    char FileSystemNameBuffer[100];
+    LPDWORD sz = NULL, fs = NULL;
+    unsigned long drive_sn;
+    GetVolumeInformationA(NULL, VolumeNameBuffer, 100, &drive_sn, sz, fs, FileSystemNameBuffer, 100);
+   //	return drive_sn;
+	Label4->Caption= drive_sn;
+
+DateTimePicker1->Date=Now().FormatString("dd.mm.yyyy");
+DBImage1->Visible=false;
+			 */
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm3::BitBtn4Click(TObject *Sender)
+{
+Form1->Show();
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm3::DBGrid2DrawColumnCell(TObject *Sender, const TRect &Rect,
+          int DataCol, TColumn *Column, TGridDrawState State)
+{
+ TDateTime dd = DM->ADOQ->FieldByName("Data_cin")->Value;
+
+
+  if( dd < Date())
+   {
+	 DBGrid2->Canvas->Brush->Color = clSkyBlue;
+	 DBGrid2->Canvas->FillRect(Rect);
+	 DBGrid2->Canvas->TextOut(Rect.Left+2, Rect.Top+2, Column->Field->Text);
+   }
+  else{
+   DBGrid2->Canvas->Brush->Color = clWhite;
+	 DBGrid2->Canvas->FillRect(Rect);
+	 DBGrid2->Canvas->TextOut(Rect.Left+2, Rect.Top+2, Column->Field->Text);
+  }
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm3::BitBtn9Click(TObject *Sender)
+{
+Form10->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::DBGrid1CellClick(TColumn *Column)
+{
+DBImage1->Visible=true;
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+void __fastcall TForm3::BitBtn1Click(TObject *Sender)
+{
+Form14->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N3Click(TObject *Sender)
+{
+if(MessageDlg("Підтвердіть видалення запису",
+mtConfirmation,TMsgDlgButtons()<<mbYes<<mbNo,0)==mrYes)
+{
+DM->Sklad_I->Delete();
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N1Click(TObject *Sender)
+{
+Form14->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::BitBtn2Click(TObject *Sender)
+{
+	DM->Sklad_I->First();
+	for (int i = 0; i < DM->Sklad_I->RecordCount; i++) {
+	DM->Sklad_I->Edit();
+	DM->Sklad_I->FieldByName("Caldo")->AsInteger = SUMM(DM->Sklad_I->FieldByName("Orendovano")->AsInteger , DM->Sklad_I->FieldByName("Zatrata")->AsInteger , DM->Sklad_I->FieldByName("Price_I")->AsInteger);
+	DM->Sklad_I->Post();
+		  DM->Sklad_I->Next();
+	}
+	Form12->frxReport1->ShowReport();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::BitBtn5Click(TObject *Sender)
+{
+Form15->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm3::BitBtn6Click(TObject *Sender)
+{
+Form17->Show();
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+void __fastcall TForm3::FormShow(TObject *Sender)
+{
+	char line[1024];
+	ifstream F("path.txt");
+	if(!F){return;}
+	while(F.getline(line, sizeof(line)))
+	{Label5->Caption=line;}
+if(!FileExists("path.txt"))
+{MessageDlg("База даних відсутня",mtInformation,TMsgDlgButtons()<<mbOK,0); Application->Terminate();}
+
+DM->ADOConnection1->ConnectionString ="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +Label5->Caption+ ";Persist Security Info=False";
+
+//DM->ADOConnection1->ConnectionString ="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ";Persist Security Info=False";
+
+if(DM->ADOConnection1->Connected==false) {
+DM->ADOConnection1->Connected==true;
+DM->Pocupec->Active=true;
+DM->Sklad_I->Active=true;
+DM->Kohuk->Active=true;
+DM->Zatrata->Active=true;
+DM->ADOQ2->Active=true;
+	  DM->Pocupec->First();
+					for (int i = 0; i < DM->Pocupec->RecordCount; i++) {
+					DM->Kohuk->First();
+					for (int i = 0; i < DM->Kohuk->RecordCount; i++) {
+					if(DM->Kohuk->FieldByName("Poverneny")->AsString == "Ні"){
+					DM->ADOQ->Active=true;
+					}
+					 DM->Kohuk->Next();
+
+			 }
+			 DM->Pocupec->Next();
+		 }
+
+DM->Kasa->Active=true;
+Form3->DBImage1->Visible=true;
+Form3->BitBtn8->Enabled=true;
+Form3->BitBtn4->Enabled=true;
+Form3->BitBtn9->Enabled=true;
+Form3->DBGrid1->Enabled=true;
+Form3->DBGrid2->Enabled=true;
+
+
+
+}
+
+else {MessageDlg("База даних не активна",mtInformation,TMsgDlgButtons()<<mbOK,0);}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N5Click(TObject *Sender)
+{
+if (SaveDialog1->Execute())
+{
+	UnicodeString a = ExtractFilePath(Application->ExeName)+"DB.mdb";
+	CopyFile(a.t_str(), SaveDialog1->FileName.t_str(), false);
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N6Click(TObject *Sender)
+{
+  if (OpenDialog1->Execute()){
+
+		AnsiString CurrentFile = OpenDialog1->FileName;
+		pathDB = ExtractFilePath(CurrentFile);
+		DM->ADOConnection1->Connected=false;
+		DM->ADOConnection1->ConnectionString ="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" +CurrentFile+ ";Persist Security Info=False";
+	   Label5->Caption=CurrentFile;
+	   TStringList* sl= new TStringList();
+	   sl->Add(Label5->Caption);
+	   sl->SaveToFile("path.txt");
+	   delete sl;
+	}
+	if(DM->ADOConnection1->Connected==false) {
+DM->ADOConnection1->Connected==true;
+DM->Pocupec->Active=true;
+DM->Sklad_I->Active=true;
+DM->Kohuk->Active=true;
+DM->Zatrata->Active=true;
+DM->ADOQ2->Active=true;
+DM->Kasa->Active=true;
+
+	  DM->Pocupec->First();
+					for (int i = 0; i < DM->Pocupec->RecordCount; i++) {
+					DM->Kohuk->First();
+					for (int i = 0; i < DM->Kohuk->RecordCount; i++) {
+					if(DM->Kohuk->FieldByName("Poverneny")->AsString == "Ні"){
+					DM->ADOQ->Active=true;
+					}
+					 DM->Kohuk->Next();
+
+			 }
+			 DM->Pocupec->Next();
+		 }
+
+
+Form3->DBImage1->Visible=true;
+Form3->BitBtn8->Enabled=true;
+Form3->BitBtn4->Enabled=true;
+Form3->BitBtn9->Enabled=true;
+Form3->DBGrid1->Enabled=true;
+Form3->DBGrid2->Enabled=true;
+
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N8Click(TObject *Sender)
+{
+  if(MessageDlg("Завершити роботу программи",
+mtConfirmation,TMsgDlgButtons()<<mbYes<<mbNo,0)==mrYes)
+Form3->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N11Click(TObject *Sender)
+{
+Form1->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N10Click(TObject *Sender)
+{
+Form3->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N13Click(TObject *Sender)
+{
+Form10->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N14Click(TObject *Sender)
+{
+	DM->Sklad_I->First();
+	for (int i = 0; i < DM->Sklad_I->RecordCount; i++) {
+	DM->Sklad_I->Edit();
+	DM->Sklad_I->FieldByName("Caldo")->AsInteger = SUMM(DM->Sklad_I->FieldByName("Orendovano")->AsInteger , DM->Sklad_I->FieldByName("Zatrata")->AsInteger , DM->Sklad_I->FieldByName("Price_I")->AsInteger);
+	DM->Sklad_I->Post();
+		  DM->Sklad_I->Next();
+	}
+	Form12->frxReport1->ShowReport();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::N15Click(TObject *Sender)
+{
+Form17->Show();
+}
+//---------------------------------------------------------------------------
+
+

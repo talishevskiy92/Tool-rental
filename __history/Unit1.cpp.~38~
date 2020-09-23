@@ -1,0 +1,231 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "Project1PCH1.h"
+#include "Unit2.h"
+#include "Unit3.h"
+#include "Unit4.h"
+#include "jpeg.hpp"
+#include "Unit7.h"
+#include "Unit8.h"
+#include "Unit10.h"
+#include "Unit11.h"
+#include "Unit9.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TForm1::BitBtn2Click(TObject *Sender)
+{
+Form4->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::DBGrid1DblClick(TObject *Sender)
+{
+Form4->Show();/*
+if((Form4->DateTimePicker3->Date)>(Form4->DateTimePicker4->Date))
+{ShowMessage("Вибрана дата перевищує дату завершення!");}
+else {
+DM->Kohuk->Filtered = false;
+DM->Kohuk->Filter = "Data_cin >='"+ Form4->DateTimePicker3->Date.FormatString("dd.mm.yyyy")+"' and Data_cin <='" + Form4->DateTimePicker4->Date.FormatString("dd.mm.yyyy")+"'";
+DM->Kohuk->Filtered = true;  } */
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BitBtn3Click(TObject *Sender)
+{
+DM->Pocupec->Insert();
+DM->Pocupec->Last();
+Edit2->SetFocus();
+DM->Pocupec->Sort="Nomer_P";
+Edit2->Clear();
+	   Edit3->Clear();
+	   Edit4->Clear();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::BitBtn5Click(TObject *Sender)
+{
+DM->Pocupec->Cancel();
+DM->Pocupec->Sort="Nomer_P";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BitBtn7Click(TObject *Sender)
+{
+if(MessageDlg("Підтвердіть видалення запису",
+mtConfirmation,TMsgDlgButtons()<<mbYes<<mbNo,0)==mrYes)
+{
+DM->Pocupec->Delete();
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BitBtn6Click(TObject *Sender)
+{
+if(Edit2->Text==""||Edit3->Text==""||Edit4->Text=="" ||Edit5->Text=="")
+	 {MessageDlg("Заповніть всі поля!", mtInformation,TMsgDlgButtons()<<mbOK,0);
+		 Edit4->SetFocus();
+		 Edit3->SetFocus();
+		 Edit5->SetFocus();
+		 Edit2->SetFocus();
+	 }
+else{
+	  DM->Pocupec->Insert();
+	  DM->Pocupec->FieldByName("PIP")->AsString = Edit2->Text;
+	  DM->Pocupec->FieldByName("Tel")->AsString = Edit3->Text;
+	  DM->Pocupec->FieldByName("Adresa")->AsString = Edit4->Text;
+	  DM->Pocupec->FieldByName("Nomer_Pasporta")->AsString = Edit5->Text;
+	  TMemoryStream* strm = new TMemoryStream();
+	  Image1->Picture->Graphic->SaveToStream(strm);
+	   ((TGraphicField*)DM->Pocupec->FieldByName("Foto"))->LoadFromStream(strm);
+	   delete strm;
+	  DM->Pocupec->Post();
+	  MessageDlg("Дані успішно збережені",mtInformation,TMsgDlgButtons()<<mbOK,0);
+			}
+	   Edit2->Clear();
+	   Edit3->Clear();
+	   Edit4->Clear();
+	   Edit5->Clear();
+	   BitBtn6->Enabled=false;
+	   Image1->Visible=false;
+	   }
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit1Change(TObject *Sender)
+{
+if(Edit1->Text=="")DM->Pocupec->Filtered=0;
+else{
+//DM->Pocupec->Filtered=0;
+DM->Pocupec->Filter="PIP Like '%"+Edit1->Text+"%'";
+DM->Pocupec->Filtered=1;}
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+Form3->Show();
+Form1->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit3KeyPress(TObject *Sender, System::WideChar &Key)
+{
+   AnsiString Ts = "0123456789+\b";
+	char Tr[] = { '\0','0','1','2','3','4','5','6','7','8','9','+','\b' };
+	Key = Tr[Ts.Pos(Key)];
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::BitBtn8Click(TObject *Sender)
+{
+	if (OpenPictureDialog1->Execute()){
+		AnsiString CurrentFile = OpenPictureDialog1->FileName;
+		Image1->Picture->LoadFromFile(CurrentFile);
+		Image1->Visible = true;
+		if(Image1->Visible == true){
+			flag = true;
+		}
+       if(flag == true && Edit2->Text != "" && Edit3->Text != "" && Edit4->Text != "" && Edit5->Text != ""){
+		BitBtn6->Enabled = true;
+	}
+	else{
+		BitBtn6->Enabled = false;
+	}
+
+	}
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::DBGrid1CellClick(TColumn *Column)
+{//Image1->Visible=false;
+
+	  //Form1->MakeFullyVisible();
+	  //Form1->Resize(AutoSize);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Edit4Change(TObject *Sender)
+{
+	if(flag == true && Edit2->Text != "" && Edit3->Text != "" && Edit4->Text != "" && Edit5->Text != ""){
+		BitBtn6->Enabled = true;
+	}
+	else{
+		BitBtn6->Enabled = false;
+	}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit2Change(TObject *Sender)
+{
+	if(flag == true && Edit2->Text != "" && Edit3->Text != "" && Edit4->Text != "" && Edit5->Text != ""){
+		BitBtn6->Enabled = true;
+	}
+	else{
+		BitBtn6->Enabled = false;
+	}
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Edit5Change(TObject *Sender)
+{
+	if(flag == true && Edit2->Text != "" && Edit3->Text != "" && Edit4->Text != "" && Edit5->Text != ""){
+		BitBtn6->Enabled = true;
+	}
+	else{
+		BitBtn6->Enabled = false;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit3Change(TObject *Sender)
+{
+	if(flag == true && Edit2->Text != "" && Edit3->Text != "" && Edit4->Text != "" && Edit5->Text != ""){
+		BitBtn6->Enabled = true;
+	}
+	else{
+		BitBtn6->Enabled = false;
+	}
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+void __fastcall TForm1::BitBtn4Click(TObject *Sender)
+{
+Form7->Show();
+}
+//---------------------------------------------------------------------------
+
+

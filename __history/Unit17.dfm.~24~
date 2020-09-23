@@ -1,0 +1,268 @@
+object Form17: TForm17
+  Left = 0
+  Top = 0
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  Caption = #1055#1086#1074#1077#1088#1085#1077#1085#1085#1103
+  ClientHeight = 438
+  ClientWidth = 785
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBText2: TDBText
+    Left = 592
+    Top = 11
+    Width = 65
+    Height = 17
+    DataField = 'Kilkist'
+    DataSource = DM.DataSource2
+    Visible = False
+  end
+  object DBText3: TDBText
+    Left = 600
+    Top = 27
+    Width = 65
+    Height = 17
+    DataField = 'Orendovana_kilkist'
+    DataSource = DM.DataSource3
+    Visible = False
+  end
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 167
+    Width = 785
+    Height = 271
+    DataSource = DM.DataSource3
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+    ParentFont = False
+    TabOrder = 0
+    TitleFont.Charset = RUSSIAN_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -15
+    TitleFont.Name = 'Times New Roman'
+    TitleFont.Style = []
+    Visible = False
+    OnCellClick = DBGrid1CellClick
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Tovar'
+        Title.Caption = #1030#1085#1089#1090#1088#1091#1084#1077#1085#1090
+        Width = 90
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Orendovana_kilkist'
+        Title.Caption = #1050#1110#1083#1100#1082#1110#1089#1090#1100
+        Width = 70
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Ckilki_Dib'
+        Title.Caption = #1057#1082#1110#1083#1100#1082#1080' '#1076#1110#1073
+        Width = 75
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_cin'
+        Title.Caption = #1044#1072#1090#1072' '#1082#1110#1085#1094#1103
+        Width = 128
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Ckilki_God'
+        Title.Caption = #1057#1082#1110#1083#1100#1082#1080' '#1075#1086#1076#1080#1085
+        Width = 93
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'God_kinec'
+        Title.Caption = #1050#1110#1085#1077#1094#1100
+        Width = 124
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Zagalom_Cina'
+        Title.Caption = #1062#1110#1085#1072
+        Width = 70
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Poverneny'
+        PickList.Strings = (
+          #1058#1072#1082
+          #1053#1110)
+        Title.Caption = #1055#1086#1074#1077#1088#1085#1077#1085#1085#1103
+        Width = 87
+        Visible = True
+      end>
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 440
+    Top = 27
+    Width = 145
+    Height = 21
+    KeyField = 'Nomer_P'
+    ListField = 'Nomer_P'
+    ListSource = DM.DataSource1
+    TabOrder = 1
+    Visible = False
+  end
+  object GroupBox2: TGroupBox
+    Left = 0
+    Top = 3
+    Width = 193
+    Height = 158
+    Caption = #1042#1074#1077#1076#1110#1090#1100' '#1085#1086#1084#1077#1088' '#1079#1072#1084#1086#1074#1083#1077#1085#1085#1103
+    TabOrder = 2
+    object DBText1: TDBText
+      Left = 75
+      Top = 43
+      Width = 65
+      Height = 17
+      DataField = 'PIP'
+      DataSource = DM.DataSource1
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Visible = False
+    end
+    object Label1: TLabel
+      Left = 16
+      Top = 43
+      Width = 53
+      Height = 15
+      Caption = #1054#1088#1077#1085#1076#1072#1088':'
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object Edit1: TEdit
+      Left = 8
+      Top = 16
+      Width = 179
+      Height = 21
+      TabOrder = 0
+      OnChange = Edit1Change
+    end
+    object BitBtn2: TBitBtn
+      Left = 8
+      Top = 62
+      Width = 179
+      Height = 25
+      Caption = #1055#1086#1074#1077#1088#1085#1091#1090#1080
+      TabOrder = 1
+      OnClick = BitBtn2Click
+    end
+    object BitBtn3: TBitBtn
+      Left = 8
+      Top = 93
+      Width = 179
+      Height = 25
+      Caption = #1060#1086#1088#1084#1091#1074#1072#1085#1085#1103' '#1072#1082#1090#1091' '#1087#1088#1080#1081#1086#1084#1091
+      TabOrder = 2
+      Visible = False
+      OnClick = BitBtn3Click
+    end
+  end
+  object Edit2: TEdit
+    Left = 440
+    Top = 54
+    Width = 145
+    Height = 21
+    TabOrder = 3
+    Visible = False
+  end
+  object DBLookupComboBox2: TDBLookupComboBox
+    Left = 440
+    Top = 0
+    Width = 145
+    Height = 21
+    KeyField = 'Nazva_I'
+    ListField = 'Nazva_I'
+    ListSource = DM.DataSource2
+    TabOrder = 4
+    Visible = False
+  end
+  object DBLookupComboBox3: TDBLookupComboBox
+    Left = 583
+    Top = 54
+    Width = 145
+    Height = 21
+    KeyField = 'Nomer'
+    ListField = 'Nomer'
+    ListSource = DM.DataSource3
+    TabOrder = 5
+    Visible = False
+  end
+  object DBLookupComboBox4: TDBLookupComboBox
+    Left = 583
+    Top = 27
+    Width = 145
+    Height = 21
+    KeyField = 'Nomer'
+    ListField = 'Nomer'
+    ListSource = DM.DataSource8
+    TabOrder = 6
+    Visible = False
+  end
+  object Edit3: TEdit
+    Left = 504
+    Top = 120
+    Width = 121
+    Height = 21
+    TabOrder = 7
+    Visible = False
+    OnChange = Edit3Change
+  end
+  object BitBtn1: TBitBtn
+    Left = 8
+    Top = 127
+    Width = 179
+    Height = 25
+    Caption = #1050#1072#1089#1072
+    TabOrder = 8
+    OnClick = BitBtn1Click
+  end
+  object BitBtn4: TBitBtn
+    Left = 232
+    Top = 88
+    Width = 75
+    Height = 25
+    Caption = 'BitBtn4'
+    TabOrder = 9
+    OnClick = BitBtn4Click
+  end
+end

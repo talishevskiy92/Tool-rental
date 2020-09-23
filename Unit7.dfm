@@ -1,0 +1,123 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  Caption = #1056#1077#1076#1072#1075#1091#1074#1072#1085#1085#1103' '#1090#1072#1073#1083#1080#1094#1110' '#1086#1088#1077#1085#1076#1072#1090#1086#1088#1080
+  ClientHeight = 401
+  ClientWidth = 193
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label3: TLabel
+    Left = 10
+    Top = 13
+    Width = 25
+    Height = 13
+    Caption = #1055#1030#1055': '
+  end
+  object Label6: TLabel
+    Left = 10
+    Top = 58
+    Width = 81
+    Height = 13
+    Caption = 'C'#1077#1088#1110#1103' '#1087#1072#1089#1087#1086#1088#1090#1072':'
+  end
+  object Label4: TLabel
+    Left = 10
+    Top = 104
+    Width = 88
+    Height = 13
+    Caption = #1053#1086#1084#1077#1088' '#1090#1077#1083#1077#1092#1086#1085#1091':'
+  end
+  object Label5: TLabel
+    Left = 10
+    Top = 150
+    Width = 41
+    Height = 13
+    Caption = #1040#1076#1088#1077#1089#1072':'
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 193
+    Height = 401
+    TabOrder = 3
+    object BitBtn1: TBitBtn
+      Left = 10
+      Top = 350
+      Width = 81
+      Height = 25
+      Caption = #1047#1073#1077#1088#1077#1075#1090#1080
+      TabOrder = 0
+      OnClick = BitBtn1Click
+    end
+    object BitBtn2: TBitBtn
+      Left = 97
+      Top = 350
+      Width = 88
+      Height = 25
+      Caption = #1053#1072#1079#1072#1076
+      TabOrder = 1
+      OnClick = BitBtn2Click
+    end
+  end
+  object DBEdit1: TDBEdit
+    Left = 10
+    Top = 31
+    Width = 175
+    Height = 21
+    DataField = 'PIP'
+    DataSource = DM.DataSource1
+    TabOrder = 0
+  end
+  object DBEdit2: TDBEdit
+    Left = 10
+    Top = 77
+    Width = 175
+    Height = 21
+    DataField = 'Nomer_Pasporta'
+    DataSource = DM.DataSource1
+    TabOrder = 1
+  end
+  object DBEdit3: TDBEdit
+    Left = 8
+    Top = 123
+    Width = 175
+    Height = 21
+    DataField = 'Tel'
+    DataSource = DM.DataSource1
+    TabOrder = 2
+  end
+  object DBEdit4: TDBEdit
+    Left = 10
+    Top = 169
+    Width = 175
+    Height = 21
+    DataField = 'Adresa'
+    DataSource = DM.DataSource1
+    TabOrder = 4
+  end
+  object DBImage1: TDBImage
+    Left = 8
+    Top = 196
+    Width = 177
+    Height = 125
+    DataField = 'Foto'
+    DataSource = DM.DataSource1
+    Proportional = True
+    TabOrder = 5
+    OnClick = DBImage1Click
+  end
+  object OpenPictureDialog1: TOpenPictureDialog
+    Left = 272
+    Top = 88
+  end
+end

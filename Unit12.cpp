@@ -1,0 +1,40 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit12.h"
+#include "Unit1.h"
+#include "Unit10.h"
+#include "Unit11.h"
+#include "Unit2.h"
+#include "Unit3.h"
+#include "Unit4.h"
+#include "Unit7.h"
+#include "Unit8.h"
+#include "Unit9.h"
+#include "Unit13.h"
+#include "Unit14.h"
+#include "Unit15.h"
+#include "Unit16.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "frxClass"
+#pragma link "frxDBSet"
+#pragma link "frxExportBaseDialog"
+#pragma link "frxExportDOCX"
+#pragma link "frxExportImage"
+#pragma link "frxExportMail"
+#pragma link "frxExportPPTX"
+#pragma link "frxPreview"
+
+#pragma link "frxBarcode"
+#pragma resource "*.dfm"
+TForm12 *Form12;
+//---------------------------------------------------------------------------
+__fastcall TForm12::TForm12(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+

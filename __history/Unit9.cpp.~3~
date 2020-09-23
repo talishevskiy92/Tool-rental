@@ -1,0 +1,120 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit9.h"
+#include "Project1PCH1.h"
+#include "Unit1.h"
+#include "Unit2.h"
+#include "Unit3.h"
+#include "Unit4.h"
+#include "Unit5.h"
+#include "Unit6.h"
+#include "Unit7.h"
+#include "Unit8.h"
+#include "Unit10.h"
+#include "Unit11.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm9 *Form9;
+//---------------------------------------------------------------------------
+__fastcall TForm9::TForm9(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn1Click(TObject *Sender)
+{
+if(Memo1->Text==""||Edit1->Text=="")
+	 {MessageDlg("Заповніть всі поля!", mtInformation,TMsgDlgButtons()<<mbOK,0);
+			 Edit1->SetFocus();
+			 Memo1->SetFocus();
+	 }
+		else{
+			  DM->Zatrata->Insert();
+			  DM->Zatrata->FieldByName("Opuc_zatrat")->AsString = Memo1->Text;
+			  DM->Zatrata->FieldByName("Price_zatrat")->AsString = Edit1->Text;
+			  DM->Zatrata->FieldByName("Data_R")->AsString = DateTimePicker1->Date.FormatString("dd.mm.yyyy");;
+			  DM->Zatrata->Post();
+	  MessageDlg("Дані успішно збережені",mtInformation,TMsgDlgButtons()<<mbOK,0);
+
+			}
+	   Memo1->Clear();      Edit1->Clear();
+       DateTimePicker1->Date = Now().FormatString("dd.mm.yyyy");
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn2Click(TObject *Sender)
+{
+if(MessageDlg("Підтвердіть видалення запису",
+mtConfirmation,TMsgDlgButtons()<<mbYes<<mbNo,0)==mrYes)
+{
+DM->Zatrata->Delete();
+DM->Zatrata->Sort = "id_zatrat";
+}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn3Click(TObject *Sender)
+{
+DM->Zatrata->Insert();
+DM->Zatrata->Last();
+Memo1->SetFocus();
+DM->Zatrata->Sort="id_zatrat";
+	   Memo1->Clear();
+	   Edit1->Clear();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn6Click(TObject *Sender)
+{
+if((DM->Zatrata->State==dsInsert)||(DM->Zatrata->State==dsEdit))
+{
+	  DM->Zatrata->FieldByName("Opuc_zatrat")->AsString = DBMemo1->Text;
+	  DM->Zatrata->FieldByName("Price_zatrat")->AsString = DBEdit1->Text;
+DM->Zatrata->Post();
+MessageDlg("Дані успішно збережені",mtInformation,TMsgDlgButtons()<<mbOK,0);
+GroupBox3->Visible=false;
+GroupBox1->Visible=true;
+}
+else
+{
+MessageDlg("Не було внесено жодних змін", mtInformation,TMsgDlgButtons()<<mbOK,0);
+DM->Zatrata->Cancel();
+}
+GroupBox3->Visible=false;
+GroupBox1->Visible=true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn4Click(TObject *Sender)
+{
+GroupBox1->Visible=false;
+GroupBox3->Visible=true;
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn7Click(TObject *Sender)
+{
+GroupBox3->Visible=false;
+GroupBox1->Visible=true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::BitBtn5Click(TObject *Sender)
+{
+Form9->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm9::FormActivate(TObject *Sender)
+{
+DateTimePicker1->Date = Now().FormatString("dd.mm.yyyy");
+Memo1->Clear();
+Edit1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm9::BitBtn8Click(TObject *Sender)
+{
+Form11->frxReport1->ShowReport();
+}
+//---------------------------------------------------------------------------
+

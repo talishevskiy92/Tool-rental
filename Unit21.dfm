@@ -1,0 +1,159 @@
+object Form21: TForm21
+  Left = 0
+  Top = 0
+  Width = 221
+  Height = 304
+  AutoScroll = True
+  AutoSize = True
+  BorderIcons = [biSystemMenu]
+  Caption = #1047#1084#1110#1085#1080' '#1090#1077#1088#1084#1110#1085#1091' '#1086#1088#1077#1085#1076#1080
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object GroupBox4: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 205
+    Height = 265
+    TabOrder = 0
+    object Label12: TLabel
+      Left = 12
+      Top = 9
+      Width = 158
+      Height = 13
+      Caption = #1053#1072' '#1076#1072#1085#1080#1081' '#1084#1086#1084#1077#1085#1090' '#1086#1088#1077#1085#1076#1091#1108#1090#1100#1089#1103':'
+    end
+    object DBText2: TDBText
+      Left = 144
+      Top = 53
+      Width = 58
+      Height = 17
+      DataField = #1057'ina_za_god'
+      DataSource = DM.DataSource2
+    end
+    object Label13: TLabel
+      Left = 12
+      Top = 53
+      Width = 119
+      Height = 13
+      Caption = #1062#1110#1085#1072' '#1079#1072' '#1075#1086#1076#1080#1085#1091' '#1086#1088#1077#1085#1076#1080':'
+    end
+    object Label14: TLabel
+      Left = 12
+      Top = 76
+      Width = 153
+      Height = 13
+      Caption = #1042#1080#1073#1077#1088#1110#1090#1100' '#1095#1072#1089' '#1087#1086#1095#1072#1090#1082#1091' '#1086#1088#1077#1085#1076#1080':'
+    end
+    object Label15: TLabel
+      Left = 12
+      Top = 124
+      Width = 172
+      Height = 13
+      Caption = #1042#1080#1073#1077#1088#1110#1090#1100' '#1095#1072#1089' '#1079#1072#1074#1077#1088#1096#1077#1085#1085#1103' '#1086#1088#1077#1085#1076#1080':'
+    end
+    object Label16: TLabel
+      Left = 12
+      Top = 172
+      Width = 76
+      Height = 13
+      Caption = #1058#1077#1088#1084#1110#1085' '#1086#1088#1077#1085#1076#1080':'
+    end
+    object Label17: TLabel
+      Left = 12
+      Top = 191
+      Width = 74
+      Height = 13
+      Caption = #1047#1072#1075#1072#1083#1100#1085#1072' '#1094#1110#1085#1072':'
+    end
+    object Label18: TLabel
+      Left = 94
+      Top = 172
+      Width = 3
+      Height = 13
+    end
+    object Label19: TLabel
+      Left = 92
+      Top = 191
+      Width = 3
+      Height = 13
+    end
+    object DBText8: TDBText
+      Left = 112
+      Top = -56
+      Width = 65
+      Height = 17
+    end
+    object DBText1: TDBText
+      Left = 12
+      Top = 30
+      Width = 172
+      Height = 17
+      DataField = 'Tovar'
+      DataSource = DM.DataSource3
+    end
+    object BitBtn11: TBitBtn
+      Left = 24
+      Top = 224
+      Width = 160
+      Height = 25
+      Caption = #1047#1073#1077#1088#1077#1075#1090#1080
+      TabOrder = 0
+      OnClick = BitBtn11Click
+    end
+    object DateTimePicker5: TDateTimePicker
+      Left = 12
+      Top = 95
+      Width = 186
+      Height = 23
+      Date = 43641.555138888890000000
+      Format = 'HH:mm    dd.MM.yy '
+      Time = 43641.555138888890000000
+      DateFormat = dfLong
+      DoubleBuffered = False
+      Kind = dtkTime
+      ParentDoubleBuffered = False
+      TabOrder = 1
+    end
+    object DateTimePicker6: TDateTimePicker
+      Left = 12
+      Top = 143
+      Width = 186
+      Height = 23
+      Date = 43641.471527777780000000
+      Format = 'HH:mm    dd.MM.yy '
+      Time = 43641.471527777780000000
+      Kind = dtkTime
+      TabOrder = 2
+      OnChange = DateTimePicker6Change
+    end
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 32
+    Top = 30
+    Width = 145
+    Height = 21
+    KeyField = 'Nazva_I'
+    ListField = 'Nazva_I'
+    ListSource = DM.DataSource2
+    TabOrder = 1
+    Visible = False
+  end
+  object DBEdit1: TDBEdit
+    Left = 8
+    Top = 208
+    Width = 121
+    Height = 21
+    DataField = 'Orendovana_kilkist'
+    DataSource = DM.DataSource3
+    TabOrder = 2
+    Visible = False
+  end
+end

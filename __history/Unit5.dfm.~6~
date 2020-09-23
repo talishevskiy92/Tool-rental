@@ -1,0 +1,91 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = #1054#1088#1077#1085#1076#1072#1090#1086#1088#1080
+  ClientHeight = 549
+  ClientWidth = 942
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 0
+    Width = 934
+    Height = 529
+    DataSource = DM.DataSource5
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Nomer_K'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PIP'
+        Width = 119
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Tovar'
+        Width = 79
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Ckilki_Dib'
+        Width = 125
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_pocat'
+        Width = 81
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_cin'
+        Width = 94
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Ckilki_God'
+        Width = 93
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'God_pochatok'
+        Width = 90
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'God_kinec'
+        Width = 60
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Poverneny'
+        Width = 87
+        Visible = True
+      end>
+  end
+end

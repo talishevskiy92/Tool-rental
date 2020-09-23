@@ -1,0 +1,55 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit8.h"
+
+#include "Unit1.h"
+#include "Unit2.h"
+#include "Unit3.h"
+#include "Unit4.h"
+#include "Unit5.h"
+#include "Unit6.h"
+#include "Unit7.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm8 *Form8;
+//---------------------------------------------------------------------------
+__fastcall TForm8::TForm8(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm8::BitBtn1Click(TObject *Sender)
+{
+if((DM->Kohuk->State==dsInsert)||(DM->Kohuk->State==dsEdit))
+{
+DM->Kohuk->FieldByName("Tovar")->AsString = DBLookupComboBox1->Text;
+DM->Kohuk->FieldByName("Cina_God")->AsString = DBText1->Caption;
+DM->Kohuk->FieldByName("God_pochatok")->AsString = DateTimePicker1->Time.FormatString("HH:mm");
+DM->Kohuk->FieldByName("God_kinec")->AsString = DateTimePicker2->Time.FormatString("HH:mm");
+
+DM->Kohuk->Post();
+MessageDlg("Дані успішно збережені",mtInformation,TMsgDlgButtons()<<mbOK,0);
+Close();
+}
+else
+{
+MessageDlg("Не було внесено жодних змін", mtInformation,TMsgDlgButtons()<<mbOK,0);
+DM->Kohuk->Cancel();
+}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm8::FormActivate(TObject *Sender)
+{
+	DateTimePicker1->Time=DBEdit2->Text;
+	DateTimePicker2->Time=DBEdit3->Text;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm8::BitBtn2Click(TObject *Sender)
+{
+Form8->Close();
+}
+//---------------------------------------------------------------------------

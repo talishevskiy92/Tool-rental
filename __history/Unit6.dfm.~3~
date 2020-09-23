@@ -1,0 +1,74 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Caption = #1041#1086#1088#1078#1085#1080#1082#1080
+  ClientHeight = 518
+  ClientWidth = 714
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnActivate = FormActivate
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object DBGrid1: TDBGrid
+    Left = 0
+    Top = 0
+    Width = 713
+    Height = 521
+    DataSource = DM.DataSource6
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'Nomer_K'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PIP'
+        Width = 49
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Tel'
+        Width = 104
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Tovar'
+        Width = 106
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_pocat'
+        Width = 126
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Data_cin'
+        Width = 184
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Poverneny'
+        Width = 236
+        Visible = True
+      end>
+  end
+end
